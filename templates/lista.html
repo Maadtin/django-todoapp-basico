@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Listado de tareas</h1>
+
+    <div class="lista-tareas-container mt-5">
+        <a href="/create-task" class="btn btn-success">Crear tarea</a>
+        <ul class="list-unstyled list-group mt-3">
+            {% if not tareas %}
+                <li class="list-group-item d-flex align-items-center justify-content-between" style="width: 300px">
+                    No tienes tareas creadas
+                </li>
+            {% else %}
+                {% for tarea in tareas %}
+                    <li class="list-group-item d-flex align-items-center justify-content-between" style="width: 300px">
+                    <span>
+                        {{ tarea.text }}
+                    </span>
+                        <a href="/edit/{{ tarea.id }}" class="btn btn-sm btn-primary">Editar</a>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+
+{% endblock %}

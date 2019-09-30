@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Crear tarea
+{% endblock %}
+
+{% block content %}
+    <h1>Crear tarea</h1>
+    <div class="lista-tareas-container mt-5">
+        <a href="/" class="btn btn-success">Volver a lista de tareas</a>
+        <form method="POST" class="form mt-3">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.text.label_tag }}
+                {{ form.text }}
+            </div>
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">{{ form.done.label }}</label>
+                </div>
+            </div>
+{#            <div class="form-group">#}
+{#                <label for="taskName" class="mb-1 d-block">Nombre de la tarea</label>#}
+{#                <input id="taskName" type="text" class="form-control form-control-sm">#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <div class="custom-control custom-checkbox">#}
+{#                    <input type="checkbox" class="custom-control-input" id="customCheck1">#}
+{#                    <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>#}
+{#                </div>#}
+{#            </div>#}
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Crear</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
